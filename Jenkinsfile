@@ -10,8 +10,18 @@ node {
         sh "summon-conjur heroku/heroku-key > ~/.netrc"
     }
 
+    stage ('Cleanup'){
+        sh "rm -rf .git"
+        sh "git init"
+    }
+
     stage('Heroku Create') {
        sh "heroku create"
+    }
+
+    stage ('Heroku Commit'){
+        sh "git add ."
+        sh "git commit -m \"test\""
     }
 
     stage('Heroku Push') {
