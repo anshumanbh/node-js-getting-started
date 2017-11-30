@@ -21,6 +21,8 @@ node {
 
     stage ('Heroku Commit'){
         sh "git add ."
+        sh "git config --global user.email \"you@example.com\""
+        sh "git config --global user.name \"Your Name\""
         sh "git commit -m \"test\""
     }
 
